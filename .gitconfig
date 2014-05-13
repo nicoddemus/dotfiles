@@ -1,0 +1,25 @@
+[alias]
+	st = status
+	co = checkout
+	fe = fetch --prune
+	pu = pull --prune
+[merge]
+	tool = kdiff3
+	defaultToUpstream = true
+[diff]
+	guitool = kdiff3
+[core]
+	excludesfile = d:\\Shared\\global-git-ignore
+	preloadindex = true
+	fscache = true
+[user]
+	name = Bruno Oliveira
+	email = nicoddemus@gmail.com
+[mergetool "kdiff3"]
+	path = C:/Program Files (x86)/KDiff3/kdiff3.exe
+[difftool "kdiff3"]
+	path = C:/Program Files (x86)/KDiff3/kdiff3.exe
+[rerere]
+	enabled = 1
+[push]
+	default = current
