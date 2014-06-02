@@ -1,13 +1,12 @@
 @echo off
 set HOME=x:\
-set .py=python
 set .rb=ruby
 alias mu=python D:\Programming\cygwin\home\Nico\projects\mu-repo\mu.py
-alias git=d:\Programming\Git\cmd\git.cmd
 alias vim=D:\Programming\Shared\vim-7.2\vim72\gvim.exe
 alias d=dir
+alias ss=py27 x:\ss\ss.py
 
-for %v in (26, 27, 33, 34) (
+for %v in (26, 27, 32, 33, 34) (
     alias py%v=D:\Programming\Python%v\python.exe
     alias pip%v=py%v -m pip
     alias py.test%v=py%v D:\Programming\Python%v\Scripts\py.test-script.py 
