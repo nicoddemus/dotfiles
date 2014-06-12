@@ -28,6 +28,7 @@ set PATH="D:\Programming\Git\bin";%PATH%
 set PATH="D:\Programming\Vagrant\bin";%PATH%
 set PATH="D:\Programming\VirtualBox";%PATH%
 set PATH="D:\Programming\Ruby1.9\bin";%PATH%
+set PATH="d:\Programming\mkvtoolnix";%PATH%
 if exist call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat"
 if exist call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\Tools\vsvars32.bat" 
 if exist call D:\Programming\DevKit\devkitvars.bat
