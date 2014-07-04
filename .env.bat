@@ -13,6 +13,7 @@ for %v in (26, 27, 32, 33, 34) (
     alias venv%v=d:\Programming\Python%v\Scripts\virtualenv.exe
 )
 
+alias pypy=d:\Programming\pypy\pypy.exe
 alias tox=d:\Programming\Python27\Scripts\tox.exe
 alias ec=D:\Programming\Shared\eclipse\eclipse.exe
 alias np=notepad++
@@ -43,6 +44,7 @@ SET "VS90COMNTOOLS=%VS100COMNTOOLS%"
 
 REM ANSI color codes
 set bright_green=$e[1;32;m
+set red=$e[0;31;m
 set green=$e[0;32;m
 set normal=$e[0;m
 set brown=$e[0;33;m
@@ -53,7 +55,7 @@ set white_on_red=$e[37;41;m
 set grey=$e[1;30;m
 
 REM prompt
-set Prompt=%green%%%@EXECSTR[git rev-parse --abbrev-ref HEAD]%normal%$_$_[$t $P]
+set Prompt=%%@EXECSTR[python %~dp0\git_prompt.py]
 
 
 REM TODO dashboard
