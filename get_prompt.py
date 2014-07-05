@@ -59,4 +59,12 @@ if returncode == 0:
 else:
     git_info = ''
 
-sys.stdout.write('$P' + git_info + '>')
+if os.environ.get('VIRTUAL_ENV'):
+    env_name = os.path.basename(os.environ['VIRTUAL_ENV'])
+    if env_name.startswith('.'):
+        env_name = env_name[1:]
+    env_info = '%bright_green%{{{env}}}%normal% '.format(env=env_name)
+else:
+    env_info = ''
+
+sys.stdout.write(env_info + '$P' + git_info + '>')

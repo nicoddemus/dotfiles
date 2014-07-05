@@ -1,10 +1,25 @@
 @echo off
+
+REM ANSI color codes
+set bright_green=$e[1;32;m
+set red=$e[0;31;m
+set green=$e[0;32;m
+set normal=$e[0;m
+set brown=$e[0;33;m
+set yellow=$e[1;33;m
+set bright_cyan=$e[1;36;m
+set bright_red=$e[1;31;m
+set white_on_red=$e[37;41;m
+set grey=$e[1;30;m
+ 
 set HOME=x:\
 set .rb=ruby
 alias mu=python D:\Programming\cygwin\home\Nico\projects\mu-repo\mu.py
 alias vim=D:\Programming\Shared\vim-7.2\vim72\gvim.exe
 alias d=dir
 alias ss=py27 x:\ss\ss.py
+alias activate=x:\dotfiles\activate.bat
+alias deactivate=x:\dotfiles\deactivate.bat
 
 for %v in (26, 27, 32, 33, 34) (
     alias py%v=D:\Programming\Python%v\python.exe
@@ -42,21 +57,9 @@ set TERM=msys
 
 SET "VS90COMNTOOLS=%VS100COMNTOOLS%"
 
-REM ANSI color codes
-set bright_green=$e[1;32;m
-set red=$e[0;31;m
-set green=$e[0;32;m
-set normal=$e[0;m
-set brown=$e[0;33;m
-set yellow=$e[1;33;m
-set bright_cyan=$e[1;36;m
-set bright_red=$e[1;31;m
-set white_on_red=$e[37;41;m
-set grey=$e[1;30;m
 
 REM prompt
-set Prompt=%%@EXECSTR[python %~dp0\git_prompt.py]
-
+set PROMPT=%%@EXECSTR[python %~dp0\get_prompt.py]
 
 REM TODO dashboard
 set TODO_DASHBOARD_GIT_URL=https://eden.esss.com.br/stash
