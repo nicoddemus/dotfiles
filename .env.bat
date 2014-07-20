@@ -20,6 +20,8 @@ alias d=dir
 alias ss=py27 x:\ss\ss.py
 alias activate=x:\dotfiles\activate.bat
 alias deactivate=x:\dotfiles\deactivate.bat
+alias av=activate
+alias dv=deactivate
 
 for %v in (26, 27, 32, 33, 34) (
     alias py%v=D:\Programming\Python%v\python.exe
