@@ -26,18 +26,20 @@ def parse_status(output):
         return m.group(1) if m else default
  
     branch = ''
-    ahead, behind, modified, unknown = 0, 0, 0, 0    
+    ahead, behind, modified, unknown, deleted = 0, 0, 0, 0, 0
     for line in output.splitlines():
         if line.startswith('?? '):
             unknown += 1
         elif line.startswith(' M'):
             modified += 1
+        elif line.startswith(' D'):
+            deleted += 1
         elif line.startswith('## '):
             branch = get_group(branch_re, line, '')
             ahead += int(get_group(ahead_re, line, 0))
             behind += int(get_group(behind_re, line, 0))
     
-    return branch, ahead, behind, modified, unknown
+    return branch, ahead, behind, modified, unknown, deleted
 
 output, returncode = check_output('git status --branch --porcelain')    
 
@@ -45,14 +47,15 @@ if returncode == 0:
     def pad(count, prefix, suffix=''):
         return ' %s%d%s' % (prefix, count, suffix) if count else ''
 
-    branch, ahead, behind, modified, unknown = parse_status(output)
+    branch, ahead, behind, modified, unknown, deleted = parse_status(output)
     sep = ' %bright_cyan%-' if (modified or unknown) else ''
 
-    git_info = r' %yellow%[%bright_cyan%{branch}{ahead}{behind}{sep}{modified}{unknown}%yellow%]%normal%'.format(
+    git_info = r' %yellow%[%bright_cyan%{branch}{ahead}{behind}{sep}{modified}{deleted}{unknown}%yellow%]%normal%'.format(
        branch=branch,
        ahead=pad(ahead, '%green%'),
        behind=pad(behind, '%red%'),
        modified=pad(modified, '%red%', 'M'),
+       deleted=pad(deleted, '%brown%', 'D'),
        unknown=pad(unknown, '%grey%', '?'),
        sep=sep,
     )
