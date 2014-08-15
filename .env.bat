@@ -20,8 +20,8 @@ alias d=dir
 alias ss=py27 x:\ss\ss.py
 alias activate=x:\dotfiles\activate.bat
 alias deactivate=x:\dotfiles\deactivate.bat
-alias av=activate
-alias dv=deactivate
+alias ac=activate
+alias de=deactivate
 
 for %v in (26, 27, 32, 33, 34) (
     alias py%v=D:\Programming\Python%v\python.exe
@@ -39,7 +39,7 @@ alias gitext=D:\Programming\GitExtensions\GitExtensions.exe
 alias x=start explorer
 alias pyc=D:\Programming\PyCharm\bin\pycharm.exe
 
-set PATH="C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC";%PATH%
+set PATH="C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin";%PATH%
 set PATH="C:\Program Files\Java\jre7\bin";%PATH%
 set PATH="D:\Programming\CMake28\bin";%PATH%
 set PATH="D:\Programming\Git\bin";%PATH%
@@ -47,8 +47,6 @@ set PATH="D:\Programming\Vagrant\bin";%PATH%
 set PATH="D:\Programming\VirtualBox";%PATH%
 set PATH="D:\Programming\Ruby1.9\bin";%PATH%
 set PATH="d:\Programming\mkvtoolnix";%PATH%
-if exist call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat"
-if exist call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\Tools\vsvars32.bat" 
 if exist call D:\Programming\DevKit\devkitvars.bat
 
 REM set PYTHONHOME=D:\Programming\Python27
@@ -66,3 +64,8 @@ set PROMPT=%%@EXECSTR[python %~dp0\get_prompt.py]
 REM TODO dashboard
 set TODO_DASHBOARD_GIT_URL=https://eden.esss.com.br/stash
 set TODO_DASHBOARD_PROJECTS=ESSS
+
+set INCLUDE=x:\gtest-1.7.0\include;%INCLUDE%
+set INCLUDE=x:\boost_1_55_0;%INCLUDE%
+
+set LIBPATH=x:\gtest-1.7.0\Release;%LIBPATH%
