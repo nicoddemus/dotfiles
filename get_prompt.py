@@ -30,9 +30,9 @@ def parse_status(output):
     for line in output.splitlines():
         if line.startswith('?? '):
             unknown += 1
-        elif line.startswith(' M'):
+        elif 'M' in line[:2]:
             modified += 1
-        elif line.startswith(' D'):
+        elif 'D' in line[:2]:
             deleted += 1
         elif line.startswith('## '):
             branch = get_group(branch_re, line, '')
