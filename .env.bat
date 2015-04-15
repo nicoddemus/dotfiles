@@ -42,7 +42,6 @@ alias pyc=D:\Programming\PyCharm\bin\pycharm.exe
 set PATH="C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin";%PATH%
 set PATH="C:\Program Files\Java\jre7\bin";%PATH%
 set PATH="D:\Programming\CMake28\bin";%PATH%
-set PATH="D:\Programming\Git\bin";%PATH%
 set PATH="D:\Programming\Vagrant\bin";%PATH%
 set PATH="D:\Programming\VirtualBox";%PATH%
 set PATH="D:\Programming\Ruby1.9\bin";%PATH%
@@ -69,3 +68,5 @@ set INCLUDE=x:\gtest-1.7.0\include;%INCLUDE%
 set INCLUDE=x:\boost_1_55_0;%INCLUDE%
 
 set LIBPATH=x:\gtest-1.7.0\Release;%LIBPATH%
+
+set QT_QPA_PLATFORM_PLUGIN_PATH=x:\qutebrowser\.venv\Lib\site-packages\PyQt5\plugins\platforms
