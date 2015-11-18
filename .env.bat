@@ -36,10 +36,11 @@ set EDITOR="C:\Program Files\Sublime Text 2\sublime_text.exe"
 alias cit=x:\cit\cit.bat
 alias gitext=D:\Programming\GitExtensions\GitExtensions.exe
 alias x=start explorer
-alias pyc=D:\Programming\PyCharm\bin\pycharm.exe
+alias pyc=C:\PyCharm\bin\pycharm.exe
 
 alias vcvars34="C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\vcvars32.bat"
 alias vcvars27="C:\Users\Bruno\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\vcvarsall.bat"
+set PATH=D:\Programming\Hub;%PATH%
 REM set PATH="C:\Program Files\Java\jre7\bin";%PATH%
 REM set PATH="D:\Programming\CMake28\bin";%PATH%
 REM set PATH="D:\Programming\Vagrant\bin";%PATH%
