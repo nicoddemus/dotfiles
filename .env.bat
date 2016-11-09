@@ -17,7 +17,6 @@ set .rb=ruby
 alias mu=python D:\Programming\cygwin\home\Nico\projects\mu-repo\mu.py
 alias vim=D:\Programming\Shared\vim-7.2\vim72\gvim.exe
 alias d=dir
-alias ss=x:\ss\.env27\Scripts\python.exe x:\ss\ss.py
 alias activate=x:\dotfiles\activate.bat
 alias deactivate=x:\dotfiles\deactivate.bat
 alias ac=activate
@@ -30,9 +29,7 @@ for %v in (26, 27, 32, 33, 34, 35) (
     alias venv%v=d:\Programming\Python%v\Scripts\virtualenv.exe
 )
 
-alias pypy=d:\Programming\pypy\pypy.exe
 alias st="C:\Program Files\Sublime Text 2\sublime_text.exe"
-set EDITOR="C:\Program Files\Sublime Text 2\sublime_text.exe" 
 alias cit=x:\cit\cit.bat
 alias gitext=D:\Programming\GitExtensions\GitExtensions.exe
 alias x=start explorer
@@ -70,5 +67,14 @@ set INCLUDE=x:\boost_1_55_0;%INCLUDE%
 
 set LIBPATH=x:\gtest-1.7.0\Release;%LIBPATH%
 
-set QT_QPA_PLATFORM_PLUGIN_PATH=d:\Programming\Python34\Lib\site-packages\PyQt5\plugins\platforms\
-alias qpa=set QT_QPA_PLATFORM_PLUGIN_PATH=%%1\Lib\site-packages\PyQt5\plugins\platforms
+:: set QT_QPA_PLATFORM_PLUGIN_PATH=d:\Programming\Python34\Lib\site-packages\PyQt5\plugins\platforms\
+:: alias qpa=set QT_QPA_PLATFORM_PLUGIN_PATH=%%1\Lib\site-packages\PyQt5\plugins\platforms
+
+set QT_QPA_PLATFORM_PLUGIN_PATH=c:\Python34-x86\Lib\site-packages\PyQt5\plugins\platforms\
+
+set GIT_EDITOR=D:/Programming/GitExtensions/GitExtensions.exe fileeditor
+
+
+
+:: set TEMP=x:\temp
+:: set TMP=%TEMP%
