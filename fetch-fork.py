@@ -11,7 +11,7 @@ fork_name = sys.argv[1]
 
 user, branch = fork_name.split(':', 1)
 
-output = subprocess.check_output('git remote show origin -n')
+output = subprocess.check_output('git remote show origin -n').decode('utf-8')
 m = re.search(r'Fetch URL: git@github.com:.*/(.*).git', output)
 if not m:
     sys.exit('Could not find Fetch URL in output:\n%s' % output)

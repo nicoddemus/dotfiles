@@ -31,6 +31,8 @@ for %v in (26, 27, 32, 33, 34, 35) (
 
 alias venv36=py -3.6 -m venv
 
+alias fetch-fork=python %~dp0fetch-fork.py
+
 alias st="C:\Program Files\Sublime Text 2\sublime_text.exe"
 alias cit=x:\cit\cit.bat
 alias gitext=D:\Programming\GitExtensions\GitExtensions.exe
