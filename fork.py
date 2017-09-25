@@ -5,7 +5,7 @@ import re
 
 # quick and dirty parsing
 
-if len(sys.argv) != 2:
+if len(sys.argv) < 2:
     sys.exit('Usage: fork fetch/push')
 
 command = sys.argv[1]
