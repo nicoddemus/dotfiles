@@ -19,12 +19,12 @@ def check_output(params):
 def parse_status(output):
     ahead_re = re.compile(r'ahead (\d+)')
     behind_re = re.compile(r'behind (\d+)')
-    branch_re = re.compile(r'## ([\d\w\_-]+)')
+    branch_re = re.compile(r'## ([\d\w\_/-]+)')
 
     def get_group(regex, line, default):
         m = regex.search(line)
         return m.group(1) if m else default
- 
+
     branch = ''
     ahead, behind, modified, unknown, deleted = 0, 0, 0, 0, 0
     for line in output.splitlines():
@@ -38,10 +38,10 @@ def parse_status(output):
             branch = get_group(branch_re, line, '')
             ahead += int(get_group(ahead_re, line, 0))
             behind += int(get_group(behind_re, line, 0))
-    
+
     return branch, ahead, behind, modified, unknown, deleted
 
-output, returncode = check_output('git status --branch --porcelain')    
+output, returncode = check_output('git status --branch --porcelain')
 
 if returncode == 0:
     def pad(count, prefix, suffix=''):
