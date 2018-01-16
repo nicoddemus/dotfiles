@@ -19,7 +19,7 @@ def check_output(params):
 def parse_status(output):
     ahead_re = re.compile(r'ahead (\d+)')
     behind_re = re.compile(r'behind (\d+)')
-    branch_re = re.compile(r'## ([\d\w\_/-]+)')
+    branch_re = re.compile(r'## ([.\d\w\_/-]+)(\.\.\..*)?')
 
     def get_group(regex, line, default):
         m = regex.search(line)

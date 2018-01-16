@@ -13,6 +13,7 @@ set white_on_red=$e[37;41;m
 set grey=$e[1;30;m
 
 set HOME=x:\
+set COLUMNS=120
 set .rb=ruby
 alias mu=python D:\Programming\cygwin\home\Nico\projects\mu-repo\mu.py
 alias vim=D:\Programming\Shared\vim-7.2\vim72\gvim.exe
@@ -37,7 +38,7 @@ alias st="C:\Program Files\Sublime Text 2\sublime_text.exe"
 alias cit=x:\cit\cit.bat
 alias gitext=D:\Programming\GitExtensions\GitExtensions.exe
 alias x=start explorer
-alias pyc=C:\PyCharm\bin\pycharm.exe
+alias pyc=C:\PyCharm\bin\pycharm64.exe
 
 alias vcvars34="C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\vcvars32.bat"
 alias vcvars35="C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
