@@ -34,7 +34,7 @@ alias venv36=py -3.6 -m venv
 
 alias fork=python %~dp0fork.py
 
-alias st="C:\Program Files\Sublime Text 2\sublime_text.exe"
+alias st="C:\Program Files\Sublime Text 3\sublime_text.exe"
 alias cit=x:\cit\cit.bat
 alias gitext=D:\Programming\GitExtensions\GitExtensions.exe
 alias x=start explorer
