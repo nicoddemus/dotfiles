@@ -6,7 +6,7 @@ import re
 # quick and dirty parsing
 
 if len(sys.argv) < 2:
-    sys.exit('Usage: fork fetch/push')
+    sys.exit('Usage: fork fetch <fork>/push [force]')
 
 command = sys.argv[1]
 if command == 'fetch':
@@ -17,6 +17,7 @@ if command == 'fetch':
 else:
     if command != 'push':
         sys.exit('Usage: use fetch or push')
+    force = sys.argv[2] == 'force' if len(sys.argv) > 2 else False
     output = subprocess.check_output('git rev-parse --abbrev-ref HEAD').decode('utf-8').strip()
     user, branch = output.split('/', 1)
 
@@ -35,8 +36,9 @@ if command == 'fetch':
     subprocess.check_call('git co -b {local_branch} FETCH_HEAD'.format(local_branch=local_branch))
     print('Created branch: {local_branch}'.format(local_branch=local_branch))
 elif command == 'push':
-    subprocess.check_call('git push git@github.com:{user}/{repo_name} {local_branch}:{branch}'.format(
-        user=user, repo_name=repo_name, branch=branch, local_branch=local_branch))
+    force_arg = '--force' if force else ''
+    subprocess.check_call('git push git@github.com:{user}/{repo_name} {force_arg} {local_branch}:{branch}'.format(
+        user=user, repo_name=repo_name, branch=branch, local_branch=local_branch, force_arg=force_arg))
 else:
     assert 0
 
