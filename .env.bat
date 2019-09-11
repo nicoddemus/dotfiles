@@ -10,6 +10,7 @@ alias deactivate=d:\projects\dotfiles\deactivate.bat
 alias ac=activate
 alias de=deactivate
 
+alias pipu=python -m pip install -U $*
 
 alias venv27=py -2.7 -m virtualenv .env27
 alias venv35=py -3.5 -m virtualenv .env35
