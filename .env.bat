@@ -13,9 +13,9 @@ alias de=deactivate
 alias pipu=python -m pip install -U $*
 
 alias venv27=py -2.7 -m virtualenv .env27
-alias venv35=py -3.5 -m virtualenv .env35
-alias venv36=py -3.6 -m virtualenv .env36
-alias venv37=py -3.7 -m virtualenv .env37
+alias venv35=py -3.5 -m venv .env35
+alias venv36=py -3.6 -m venv .env36
+alias venv37=py -3.7 -m venv .env37
 
 alias fork=py -3.6 %~dp0fork.py
 
