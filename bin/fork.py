@@ -24,6 +24,12 @@ def parse_slug(slug):
     return Slug(user, branch, local_branch)
 
 
+def get_current_slug():
+    output = check_output('git rev-parse --abbrev-ref HEAD').decode('utf-8')
+    slug = output.strip().replace('/', ':', 1)
+    return parse_slug(slug)
+
+
 def fetch(args):
     slug = parse_slug(args.slug)
     repo_name = get_current_repo_name()
@@ -32,7 +38,7 @@ def fetch(args):
 
 
 def push(args):
-    slug = parse_slug(args.slug)
+    slug = get_current_slug()
     repo_name = get_current_repo_name()
     cmd = f'git push git@github.com:{slug.user}/{repo_name} {slug.local_branch}:{slug.branch}'
     if args.force:
@@ -63,7 +69,6 @@ def main(argv):
     description = 'Pushes a local branch in slug format back to upstream'
     push_parser = sub_parsers.add_parser('push', description=description)
     push_parser.set_defaults(func=push)
-    push_parser.add_argument('slug')
     push_parser.add_argument('--force', action="store_true", default=False)
 
     description = 'Clones an upstream URL, setting up origin and upstream remotes'
