@@ -25,16 +25,41 @@ def parse_slug(slug):
 
 
 def get_current_slug():
-    output = check_output('git rev-parse --abbrev-ref HEAD').decode('utf-8')
+    output = check_output('git rev-parse --abbrev-ref HEAD', encoding='UTF-8')
     slug = output.strip().replace('/', ':', 1)
     return parse_slug(slug)
 
 
+def get_branches():
+    output = check_output(f'git branch', encoding='UTF-8')
+    branches = []
+    current = None
+    for line in output.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        current_prefix = '* '
+        if line.startswith(current_prefix):
+            current = line[len(current_prefix):].strip()
+            branches.append(current)
+        else:
+            branches.append(line)
+    assert current is not None
+    return current, branches
+
+
 def fetch(args):
+    current, branches = get_branches()
     slug = parse_slug(args.slug)
     repo_name = get_current_repo_name()
     check_call(f'git fetch git@github.com:{slug.user}/{repo_name} {slug.branch}')
-    check_call(f'git co -b {slug.local_branch} FETCH_HEAD')
+    if current == slug.local_branch:
+        check_call(f'git reset --hard FETCH_HEAD')
+    elif slug.local_branch in branches:
+        check_call(f'git co {slug.local_branch}')
+        check_call(f'git reset --hard FETCH_HEAD')
+    else:
+        check_call(f'git co -b {slug.local_branch} FETCH_HEAD')
 
 
 def push(args):
