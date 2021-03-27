@@ -74,7 +74,9 @@ def push(args):
 def clone(args):
     m = re.match(r'git@github.com:(.*)/(.*).git', args.url)
     if not m:
-        print(f'Error matching {args.url}')
+        print(f"Error matching {args.url}, 'clone' takes git@github.com url")
+        print(f"Did you mean fork fetch?")
+        return
     owner, repo_name = m.groups()
     check_call(f'git clone git@github.com:nicoddemus/{repo_name}.git')
     check_call(f'git remote add upstream {args.url}', cwd=repo_name)
@@ -94,7 +96,7 @@ def main(argv):
     description = 'Pushes a local branch in slug format back to upstream'
     push_parser = sub_parsers.add_parser('push', description=description)
     push_parser.set_defaults(func=push)
-    push_parser.add_argument('--force', action="store_true", default=False)
+    push_parser.add_argument('--force', '-f', action="store_true", default=False)
 
     description = 'Clones an upstream URL, setting up origin and upstream remotes'
     fork_parser = sub_parsers.add_parser('clone', description=description)
