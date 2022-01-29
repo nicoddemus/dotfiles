@@ -67,7 +67,7 @@ def push(args):
     repo_name = get_current_repo_name()
     cmd = f'git push git@github.com:{slug.user}/{repo_name} {slug.local_branch}:{slug.branch}'
     if args.force:
-        cmd += ' --force'
+        cmd += ' --force-with-lease'
     check_call(cmd)
 
 
