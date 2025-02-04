@@ -12,7 +12,7 @@ Slug = namedtuple('Slug', 'user branch local_branch')
 
 def get_current_repo_name():
     output = check_output('git remote show origin -n').decode('utf-8')
-    m = re.search(r'Fetch URL: git@github.com:.*/(.*).git', output)
+    m = re.search(r'Fetch URL: git@github.com:.*/(.*)(.git)?', output)
     if not m:
         sys.exit('Could not find Fetch URL in output:\n%s' % output)
     return m.group(1)
