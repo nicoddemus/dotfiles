@@ -11,7 +11,7 @@ Slug = namedtuple('Slug', 'user branch local_branch')
 
 
 def get_current_repo_name():
-    output = check_output('git remote show origin -n').decode('utf-8')
+    output = check_output(['git', 'remote', 'show', 'origin', '-n']).decode('utf-8')
     m = re.search(r'Fetch URL: git@github.com:.*/(.*)(.git)?', output)
     if not m:
         sys.exit('Could not find Fetch URL in output:\n%s' % output)
@@ -25,13 +25,13 @@ def parse_slug(slug):
 
 
 def get_current_slug():
-    output = check_output('git rev-parse --abbrev-ref HEAD', encoding='UTF-8')
+    output = check_output(['git', 'rev-parse', '--abbrev-ref', 'HEAD'], encoding='UTF-8')
     slug = output.strip().replace('/', ':', 1)
     return parse_slug(slug)
 
 
 def get_branches():
-    output = check_output(f'git branch', encoding='UTF-8')
+    output = check_output(['git', 'branch'], encoding='UTF-8')
     branches = []
     current = None
     for line in output.splitlines():
@@ -52,7 +52,7 @@ def fetch(args):
     current, branches = get_branches()
     slug = parse_slug(args.slug)
     repo_name = get_current_repo_name()
-    check_call(f'git fetch git@github.com:{slug.user}/{repo_name} {slug.branch}')
+    check_call(f['git', 'fetch', 'git@github.com:{slug.user}/{repo_name}', slug.branch])
     if current == slug.local_branch:
         check_call(f'git reset --hard FETCH_HEAD')
     elif slug.local_branch in branches:
@@ -65,9 +65,9 @@ def fetch(args):
 def push(args):
     slug = get_current_slug()
     repo_name = get_current_repo_name()
-    cmd = f'git push git@github.com:{slug.user}/{repo_name} {slug.local_branch}:{slug.branch}'
+    cmd = ['git', 'push', f'git@github.com:{slug.user}/{repo_name}', f'{slug.local_branch}:{slug.branch}']
     if args.force:
-        cmd += ' --force-with-lease'
+        cmd += ['--force-with-lease']
     check_call(cmd)
 
 
@@ -78,9 +78,9 @@ def clone(args):
         print(f"Did you mean fork fetch?")
         return
     owner, repo_name = m.groups()
-    check_call(f'git clone git@github.com:nicoddemus/{repo_name}.git')
-    check_call(f'git remote add upstream {args.url}', cwd=repo_name)
-    check_call(f'git fetch --all', cwd=repo_name)
+    check_call(['git', 'clone', f'git@github.com:nicoddemus/{repo_name}.git'])
+    check_call(['git', 'remote', 'add', 'upstream', args.url], cwd=repo_name)
+    check_call(['git', 'fetch', '--all'], cwd=repo_name)
 
 
 def main(argv):
